@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "portfolio-web",
+    "slug": "portfolio-web",
+    "version": "1.0.0",
+    "scheme": "portfolio",
+    "platforms": [
+      "web"
+    ],
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png",
+      "name": "Portfolio",
+      "description": "Personal portfolio platform with interactive project showcase",
+      "lang": "en",
+      "themeColor": "#2563EB",
+      "backgroundColor": "#FFFFFF"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      }
+    }
+  }
+}

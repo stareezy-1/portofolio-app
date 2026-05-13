@@ -1,0 +1,8 @@
+.env
+.env.*
+supabase/
+README.md
+*.md
+.git
+.gitignore
+*_test.go

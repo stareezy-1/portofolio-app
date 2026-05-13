@@ -1,0 +1,29 @@
+# Fly.io configuration for portfolio-api
+# Docs: https://fly.io/docs/reference/configuration/
+
+app = "portfolio-api-bintang"
+primary_region = "sin"  # Singapore — closest to South Tangerang
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # Non-secret env vars — secrets go in fly secrets (see deploy guide below)
+  API_PORT = "8080"
+  FRONTEND_ORIGIN = "https://your-portfolio.vercel.app"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true   # Stop when idle to stay in free tier
+  auto_start_machines = true  # Auto-start on request
+  min_machines_running = 0    # 0 = fully free (slight cold start ~1-2s)
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 100
+    hard_limit = 200
+
+[[vm]]
+  size = "shared-cpu-1x"   # Free tier machine
+  memory = "256mb"
