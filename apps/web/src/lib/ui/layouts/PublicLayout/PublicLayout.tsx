@@ -4,9 +4,11 @@ import {
   Text,
   ScrollView,
   Pressable,
+  Linking,
   AccessibilityInfo,
 } from "react-native";
 import { NavLink } from "../../molecules/NavLink";
+import { useContent } from "../../../hooks/useContent";
 import styles from "./PublicLayout.style";
 
 export interface PublicLayoutProps {
@@ -31,6 +33,12 @@ export function PublicLayout({
   currentRoute = "/",
 }: PublicLayoutProps) {
   const scrollRef = React.useRef<ScrollView>(null);
+  const { data: contentData } = useContent();
+  const socialLinks = contentData?.data?.socialLinks ?? [
+    { platform: "GitHub", url: "https://github.com" },
+    { platform: "LinkedIn", url: "https://linkedin.com" },
+    { platform: "Twitter", url: "https://twitter.com" },
+  ];
 
   const handleSkipToContent = () => {
     scrollRef.current?.scrollTo({ y: 0, animated: false });
@@ -105,10 +113,15 @@ export function PublicLayout({
             <Text style={styles.footerTagline}>Built with Expo + Go</Text>
           </View>
           <View style={styles.footerRight}>
-            {["GitHub", "LinkedIn", "Twitter"].map((link) => (
-              <Text key={link} style={styles.footerLink}>
-                {link}
-              </Text>
+            {socialLinks.map((link) => (
+              <Pressable
+                key={link.platform}
+                onPress={() => Linking.openURL(link.url)}
+                accessibilityRole="link"
+                accessibilityLabel={`Visit ${link.platform}`}
+              >
+                <Text style={styles.footerLink}>{link.platform}</Text>
+              </Pressable>
             ))}
           </View>
         </View>

@@ -2,14 +2,21 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: 8,
     alignSelf: "flex-start",
+    borderWidth: 1,
   },
-  tech: { backgroundColor: "#EFF6FF" },
-  status: { backgroundColor: "#F0FDF4" },
-  label: { fontSize: 12, fontWeight: "500" },
-  techLabel: { color: "#2563EB" },
-  statusLabel: { color: "#16A34A" },
+  tech: {
+    backgroundColor: "rgba(99,102,241,0.1)",
+    borderColor: "rgba(99,102,241,0.25)",
+  },
+  status: {
+    backgroundColor: "rgba(34,197,94,0.1)",
+    borderColor: "rgba(34,197,94,0.25)",
+  },
+  label: { fontSize: 12, fontWeight: "600" },
+  techLabel: { color: "#A5B4FC" },
+  statusLabel: { color: "#4ADE80" },
 });

@@ -326,7 +326,7 @@ export default function LandingPage() {
         </Wrap>
       </View>
 
-      {/* Social Links — dynamic */}
+      {/* Social Links — dynamic
       <View
         style={[styles.socialSection, { borderTopColor: socialBorder }]}
         accessible
@@ -344,7 +344,7 @@ export default function LandingPage() {
             />
           ))}
         </View>
-      </View>
+      </View> */}
     </View>
   );
 }

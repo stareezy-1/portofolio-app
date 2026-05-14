@@ -39,7 +39,7 @@ export function AdminLayout({
     <View style={styles.container}>
       <View
         style={styles.sidebar}
-        accessibilityRole="navigation"
+        // accessibilityRole="navigation"
         accessibilityLabel="Admin navigation"
       >
         <View style={styles.sidebarLogoRow}>
@@ -72,7 +72,10 @@ export function AdminLayout({
       </View>
 
       <View style={styles.mainArea}>
-        <View style={styles.header} accessibilityRole="banner">
+        <View
+          style={styles.header}
+          // accessibilityRole="banner"
+        >
           <Text style={styles.headerTitle}>Dashboard</Text>
           <View style={styles.headerBadge}>
             <View style={styles.headerBadgeDot} />

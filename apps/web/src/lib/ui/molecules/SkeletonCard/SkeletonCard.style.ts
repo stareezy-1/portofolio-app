@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    borderRadius: 12,
-    backgroundColor: "#FFFFFF",
+    borderRadius: 20,
+    backgroundColor: "rgba(15,20,40,0.8)",
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "#E2E8F0",
+    borderColor: "rgba(99,102,241,0.08)",
   },
-  content: { padding: 12, gap: 8 },
+  content: { padding: 18, gap: 10 },
   tags: { flexDirection: "row", gap: 6, marginTop: 4 },
 });

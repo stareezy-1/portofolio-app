@@ -44,7 +44,7 @@ export function TechStackSection({
   return (
     <View
       style={[styles.container, { backgroundColor: containerBg }]}
-      accessibilityRole="region"
+      // accessibilityRole="region"
       accessibilityLabel="Tech stack"
     >
       <View style={styles.inner}>

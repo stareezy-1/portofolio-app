@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import styles from "./HeroSection.style";
+import { useContent } from "@/lib/hooks";
 
 export interface HeroSectionProps {
   title?: string;
@@ -28,6 +29,8 @@ export function HeroSection({
   onViewWork,
   onContact,
 }: HeroSectionProps) {
+  const { data } = useContent();
+
   const [reduceMotion, setReduceMotion] = React.useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(40)).current;
@@ -136,9 +139,12 @@ export function HeroSection({
 
       <Animated.View style={[styles.statsRow, { opacity: statsAnim }]}>
         {[
-          { number: "5+", label: "Years Experience" },
-          { number: "30+", label: "Projects Built" },
-          { number: "10+", label: "Happy Clients" },
+          {
+            number: `${data?.data?.yearsOfExperience}+`,
+            label: "Years Experience",
+          },
+          { number: `${data?.data?.projectsBuilt}+`, label: "Projects Built" },
+          { number: `${data?.data.happyClients}+`, label: "Happy Clients" },
           { number: "∞", label: "Lines of Code" },
         ].map((stat) => (
           <View key={stat.label} style={styles.stat}>
