@@ -7,7 +7,6 @@ apps/web/node_modules/
 
 # Expo
 .expo/
-dist/
 web-build/
 
 # Environment variables
