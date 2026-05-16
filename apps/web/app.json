@@ -1,26 +1,29 @@
 {
   "expo": {
-    "name": "portfolio-web",
+    "name": "Stareezy — Muhammad Bintang Al Akbar",
     "slug": "portfolio-web",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scheme": "portfolio",
-    "platforms": [
-      "web"
-    ],
+    "platforms": ["web"],
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/favicon.png",
-      "name": "Portfolio",
-      "description": "Personal portfolio platform with interactive project showcase",
+      "favicon": "./public/favicon.svg",
+      "name": "Stareezy — Portfolio",
+      "shortName": "Stareezy",
+      "description": "Muhammad Bintang Al Akbar — Front-End Developer specializing in React & React Native. Building modern web and mobile applications.",
       "lang": "en",
-      "themeColor": "#2563EB",
-      "backgroundColor": "#FFFFFF"
+      "themeColor": "#0f172a",
+      "backgroundColor": "#0f172a",
+      "display": "standalone",
+      "startUrl": "/",
+      "orientation": "any",
+      "scope": "/",
+      "pwa": {
+        "enabled": true
+      }
     },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
+    "plugins": ["expo-router", "expo-font"],
     "experiments": {
       "typedRoutes": true
     },

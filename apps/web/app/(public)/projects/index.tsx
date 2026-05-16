@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
+import Head from "expo-router/head";
 import { ProjectGrid } from "@/lib/ui/organisms/ProjectGrid";
 import { useMetadata } from "../../../src/components/MetaHead";
 import { useProjectList } from "../../../src/hooks/projects/useProjectList";
@@ -40,6 +41,26 @@ export default function ProjectListPage() {
       accessible
       accessibilityLabel="Projects page"
     >
+      <Head>
+        <title>Projects — Muhammad Bintang Al Akbar | Stareezy</title>
+        <meta
+          name="description"
+          content="Explore projects built by Muhammad Bintang Al Akbar — React, React Native, TypeScript, Expo, Go and Supabase applications."
+        />
+        <meta property="og:title" content="Projects — Stareezy Portfolio" />
+        <meta
+          property="og:description"
+          content="Explore projects built with React, React Native, TypeScript, Expo, Go and Supabase."
+        />
+        <meta
+          property="og:url"
+          content="https://stareezy.tech/projects"
+        />
+        <link
+          rel="canonical"
+          href="https://stareezy.tech/projects"
+        />
+      </Head>
       <Text style={styles.heading}>Projects</Text>
 
       <ProjectGrid

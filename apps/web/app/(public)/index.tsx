@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Head from "expo-router/head";
 import {
   View,
   Text,
@@ -112,6 +113,93 @@ export default function LandingPage() {
 
   return (
     <View style={styles.container} accessible accessibilityLabel="Landing page">
+      {/* SEO Head */}
+      <Head>
+        <title>
+          Muhammad Bintang Al Akbar — Front-End Developer | Stareezy
+        </title>
+        <meta
+          name="description"
+          content="Muhammad Bintang Al Akbar — Front-End Developer with 3+ years experience in React & React Native. Building modern web and mobile applications. Based in Jakarta, Indonesia."
+        />
+        <meta
+          name="keywords"
+          content="Muhammad Bintang Al Akbar, Front-End Developer, React Developer, React Native Developer, TypeScript, Expo, Jakarta, Indonesia, portfolio, software engineer"
+        />
+        <meta name="author" content="Muhammad Bintang Al Akbar" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://stareezy.tech/" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://stareezy.tech/"
+        />
+        <meta
+          property="og:title"
+          content="Muhammad Bintang Al Akbar — Front-End Developer"
+        />
+        <meta
+          property="og:description"
+          content="Front-End Developer with 3+ years experience in React & React Native. Building modern web and mobile applications."
+        />
+        <meta
+          property="og:image"
+          content="https://stareezy.tech/og-image.svg"
+        />
+        <meta property="og:site_name" content="Stareezy Portfolio" />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Muhammad Bintang Al Akbar — Front-End Developer"
+        />
+        <meta
+          name="twitter:description"
+          content="Front-End Developer with 3+ years experience in React & React Native."
+        />
+        <meta
+          name="twitter:image"
+          content="https://stareezy.tech/og-image.svg"
+        />
+        {/* PWA */}
+        <meta name="theme-color" content="#0f172a" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon-192.svg" />
+        {/* JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Muhammad Bintang Al Akbar",
+            url: "https://stareezy.tech/",
+            jobTitle: "Front-End Developer",
+            description:
+              "Front-End Developer specializing in React & React Native with 3+ years of experience.",
+            sameAs: [
+              "https://github.com/stareezy-1",
+              "https://id.linkedin.com/in/muhammad-bintang-al-akbar-72302812a",
+              "https://www.instagram.com/stareezy/",
+            ],
+            knowsAbout: [
+              "React",
+              "React Native",
+              "TypeScript",
+              "Expo",
+              "Go",
+              "Supabase",
+            ],
+            worksFor: { "@type": "Organization", name: "Rekosistem" },
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Jakarta",
+              addressCountry: "ID",
+            },
+          })}
+        </script>
+      </Head>
+
       {/* Hero — fully dynamic */}
       <HeroSection
         title="Hi, I'm"

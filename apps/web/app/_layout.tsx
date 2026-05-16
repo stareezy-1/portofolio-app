@@ -4,6 +4,7 @@ import { ThemeProvider as AppThemeProvider } from "../src/providers/theme-provid
 import { ThemeProvider as StareezyThemeProvider } from "@stareezy-ui/tokens";
 import { ErrorBoundary } from "../src/error/error-boundary";
 import { STALE_TIME_PROJECTS } from "@/lib/constants/api.const";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +20,16 @@ const queryClient = new QueryClient({
 });
 
 export default function RootLayout() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").catch(() => {
+          // SW registration failed — app still works without it
+        });
+      });
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>

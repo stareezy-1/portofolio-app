@@ -6,6 +6,7 @@ import {
   Linking,
   ActivityIndicator,
 } from "react-native";
+import Head from "expo-router/head";
 import { useResume } from "@/lib/hooks/useResume";
 import { useMetadata } from "../../src/components/MetaHead";
 import styles from "./resume.style";
@@ -32,6 +33,26 @@ export default function ResumePage() {
 
   return (
     <View style={styles.container} accessible accessibilityLabel="Resume page">
+      <Head>
+        <title>Resume — Muhammad Bintang Al Akbar | Stareezy</title>
+        <meta
+          name="description"
+          content="Resume of Muhammad Bintang Al Akbar — Front-End Developer with 3+ years experience in React, React Native, TypeScript, Expo, Go and Supabase."
+        />
+        <meta property="og:title" content="Resume — Stareezy Portfolio" />
+        <meta
+          property="og:description"
+          content="Resume of Muhammad Bintang Al Akbar — Front-End Developer."
+        />
+        <meta
+          property="og:url"
+          content="https://stareezy.tech/resume"
+        />
+        <link
+          rel="canonical"
+          href="https://stareezy.tech/resume"
+        />
+      </Head>
       <Text style={styles.eyebrow}>My Resume</Text>
       <Text style={[styles.heading, { color: "#F8FAFC" }]}>
         Curriculum Vitae
