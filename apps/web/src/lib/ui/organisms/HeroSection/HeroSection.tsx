@@ -140,11 +140,17 @@ export function HeroSection({
       <Animated.View style={[styles.statsRow, { opacity: statsAnim }]}>
         {[
           {
-            number: `${data?.data?.yearsOfExperience}+`,
+            number: `${data?.data?.yearsOfExperience ?? 3}+`,
             label: "Years Experience",
           },
-          { number: `${data?.data?.projectsBuilt}+`, label: "Projects Built" },
-          { number: `${data?.data.happyClients}+`, label: "Happy Clients" },
+          {
+            number: `${data?.data?.projectsBuilt ?? 9}+`,
+            label: "Projects Built",
+          },
+          {
+            number: `${data?.data.happyClients ?? 3}+`,
+            label: "Happy Clients",
+          },
           { number: "∞", label: "Lines of Code" },
         ].map((stat) => (
           <View key={stat.label} style={styles.stat}>

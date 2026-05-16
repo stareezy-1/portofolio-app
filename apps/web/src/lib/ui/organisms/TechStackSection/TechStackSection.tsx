@@ -11,22 +11,34 @@ const DEFAULT_CATEGORIES = [
   {
     category: "Frontend",
     icon: "🎨",
-    skills: ["React", "React Native", "TypeScript", "Expo", "Next.js", "CSS"],
+    skills: [
+      "React",
+      "React Native",
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "Expo",
+    ],
   },
   {
-    category: "Backend",
+    category: "State Management",
     icon: "⚙️",
-    skills: ["Go", "Node.js", "PostgreSQL", "Redis", "REST", "GraphQL"],
+    skills: ["Redux", "Redux Thunk", "MobX", "Zustand", "React Hook"],
   },
   {
     category: "Mobile",
     icon: "📱",
-    skills: ["Expo", "React Native", "iOS", "Android", "Push Notifications"],
+    skills: ["React Native", "Expo", "React Native Web", "PWA", "Firebase"],
   },
   {
-    category: "DevOps & Tools",
+    category: "Backend & Tools",
     icon: "🛠️",
-    skills: ["Docker", "AWS", "CI/CD", "Git", "Linux", "Nginx"],
+    skills: ["Node.js", ".NET Core", "C#", "PHP", "MySQL", "CI/CD", "Golang"],
+  },
+  {
+    category: "UI Libraries",
+    icon: "🎯",
+    skills: ["Chakra UI", "React Native Paper", "Tamagui", "Tailwind"],
   },
 ];
 
