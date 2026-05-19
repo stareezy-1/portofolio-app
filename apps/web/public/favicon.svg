@@ -1,5 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#0f172a"/>
-  <circle cx="16" cy="16" r="6" fill="none" stroke="#2563EB" stroke-width="2"/>
-  <circle cx="16" cy="16" r="2" fill="#2563EB"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00cc6a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#050505"/>
+
+  <!-- Subtle glow -->
+  <circle cx="16" cy="16" r="14" fill="url(#glow)"/>
+
+  <!-- Border ring -->
+  <rect width="32" height="32" rx="7" fill="none" stroke="#00ff88" stroke-width="0.8" stroke-opacity="0.35"/>
+
+  <!-- Letter S -->
+  <text
+    x="16" y="22"
+    font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="18"
+    font-weight="800"
+    fill="url(#sGrad)"
+    text-anchor="middle"
+    letter-spacing="-0.5"
+  >S</text>
+
+  <!-- Star dots -->
+  <circle cx="5" cy="5" r="0.8" fill="#00ff88" opacity="0.6"/>
+  <circle cx="27" cy="6" r="0.5" fill="#00ff88" opacity="0.4"/>
+  <circle cx="26" cy="27" r="0.7" fill="#00ff88" opacity="0.5"/>
+  <circle cx="6" cy="26" r="0.5" fill="#00ff88" opacity="0.3"/>
 </svg>
