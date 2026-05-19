@@ -1,6 +1,24 @@
 import { create } from "zustand";
 import { EThemeMode } from "@/lib/constants/enums";
 import { getStoredTheme, setStoredTheme } from "@/lib/utils/storage";
+import { aurora, type AuroraTokens } from "@/lib/constants/aurora";
+
+// ---------------------------------------------------------------------------
+// Aurora store — single aurora theme for public routes (Task 1.1)
+// ---------------------------------------------------------------------------
+
+export interface IAuroraStore {
+  tokens: AuroraTokens;
+}
+
+export const useAuroraStore = create<IAuroraStore>(() => ({
+  tokens: aurora,
+}));
+
+// ---------------------------------------------------------------------------
+// Legacy theme store — kept for backward compatibility with existing tests
+// and admin panel code that still uses light/dark toggle.
+// ---------------------------------------------------------------------------
 
 export interface IThemeStore {
   mode: EThemeMode;
@@ -31,8 +49,6 @@ export const useThemeStore = create<IThemeStore>((set) => ({
       set({ mode: stored });
       return;
     }
-
-    // Fallback to system preference
     if (typeof window !== "undefined" && window.matchMedia) {
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)",

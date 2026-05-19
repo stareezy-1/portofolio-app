@@ -11,7 +11,7 @@ export default function AdminProjectListPage() {
   const { data, isLoading } = useProjects({ page: 1, limit: 50 });
   const deleteProject = useDeleteProject();
 
-  const projects = data?.data ?? [];
+  const projects = data ?? [];
 
   const handleCreate = useCallback(() => {
     router.push("/admin/projects/new" as any);

@@ -1,8 +1,9 @@
-import type { IApiResponse } from "../types/api";
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "../utils/api-client";
 import type { IProject } from "../types/project";
 import { EProjectType } from "../constants/enums";
 
-// Hardcoded until backend is deployed
+// Hardcoded fallback — DO NOT REMOVE. Used when backend is not deployed.
 export const HARDCODED_PROJECTS: IProject[] = [
   {
     id: "a1b2c3d4-0001-4000-8000-000000000001",
@@ -86,30 +87,91 @@ export const HARDCODED_PROJECTS: IProject[] = [
   },
 ];
 
-const ok = <T>(data: T): IApiResponse<T> => ({
-  success: true,
-  data,
-  meta: undefined,
-  error: undefined,
-});
-
-export function useProjects(_params?: { page?: number; limit?: number }) {
-  return { data: ok(HARDCODED_PROJECTS), isLoading: false, error: null };
+export interface IHookResult<T> {
+  data: T | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  isFallback: boolean;
+  refetch: () => void;
 }
 
-export function useProject(slug: string) {
-  const project = HARDCODED_PROJECTS.find((p) => p.slug === slug) ?? null;
+const hasApiUrl = !!process.env.EXPO_PUBLIC_API_URL;
+
+export function useProjects(_params?: {
+  page?: number;
+  limit?: number;
+}): IHookResult<IProject[]> {
+  const query = useQuery<IProject[]>({
+    queryKey: ["projects", _params],
+    queryFn: async () => {
+      if (!hasApiUrl) throw new Error("No API URL");
+      const res = await apiClient.get("/projects", { params: _params });
+      return res.data.data;
+    },
+    placeholderData: HARDCODED_PROJECTS,
+    retry: hasApiUrl ? 2 : 0,
+  });
+
+  const isFallback = !hasApiUrl || query.isError;
+  const data = isFallback
+    ? HARDCODED_PROJECTS
+    : query.data ?? HARDCODED_PROJECTS;
+
   return {
-    data: project ? ok(project) : undefined,
-    isLoading: false,
-    error: null,
+    data,
+    isLoading: query.isLoading && hasApiUrl,
+    isError: query.isError && hasApiUrl,
+    isFallback,
+    refetch: query.refetch,
   };
 }
 
-export function useFeaturedProjects() {
+export function useProject(slug: string): IHookResult<IProject | null> {
+  const query = useQuery<IProject | null>({
+    queryKey: ["project", slug],
+    queryFn: async () => {
+      if (!hasApiUrl) throw new Error("No API URL");
+      const res = await apiClient.get(`/projects/${slug}`);
+      return res.data.data;
+    },
+    placeholderData: HARDCODED_PROJECTS.find((p) => p.slug === slug) ?? null,
+    retry: hasApiUrl ? 2 : 0,
+  });
+
+  const fallback = HARDCODED_PROJECTS.find((p) => p.slug === slug) ?? null;
+  const isFallback = !hasApiUrl || query.isError;
+  const data = isFallback ? fallback : query.data ?? fallback;
+
   return {
-    data: ok(HARDCODED_PROJECTS.filter((p) => p.featured)),
-    isLoading: false,
-    error: null,
+    data,
+    isLoading: query.isLoading && hasApiUrl,
+    isError: query.isError && hasApiUrl && fallback === null,
+    isFallback,
+    refetch: query.refetch,
+  };
+}
+
+export function useFeaturedProjects(): IHookResult<IProject[]> {
+  const query = useQuery<IProject[]>({
+    queryKey: ["featured-projects"],
+    queryFn: async () => {
+      if (!hasApiUrl) throw new Error("No API URL");
+      const res = await apiClient.get("/featured-projects");
+      return res.data.data;
+    },
+    placeholderData: HARDCODED_PROJECTS.filter((p) => p.featured),
+    retry: hasApiUrl ? 2 : 0,
+  });
+
+  const fallback = HARDCODED_PROJECTS.filter((p) => p.featured);
+  const isFallback = !hasApiUrl || query.isError;
+  const data = isFallback ? fallback : query.data ?? fallback;
+
+  return {
+    data,
+    isLoading: query.isLoading && hasApiUrl,
+    isError: query.isError && hasApiUrl,
+    isFallback,
+    refetch: query.refetch,
   };
 }

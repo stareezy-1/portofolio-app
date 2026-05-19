@@ -13,8 +13,8 @@ export default function AdminDashboard() {
   });
   const { data: resumeData } = useResume();
 
-  const projects = projectsData?.data ?? [];
-  const totalProjects = projectsData?.meta?.total ?? projects.length;
+  const projects = projectsData ?? [];
+  const totalProjects = projects.length;
   const featuredCount = projects.filter((p) => p.featured).length;
   const hasPDF = !!resumeData?.data?.pdfUrl;
 
@@ -190,7 +190,11 @@ export default function AdminDashboard() {
           />
           <Text style={styles.resumeStatusText}>
             {hasPDF
-              ? `PDF uploaded · Last updated ${resumeData?.data?.updatedAt ? new Date(resumeData.data.updatedAt).toLocaleDateString() : "recently"}`
+              ? `PDF uploaded · Last updated ${
+                  resumeData?.data?.updatedAt
+                    ? new Date(resumeData.data.updatedAt).toLocaleDateString()
+                    : "recently"
+                }`
               : "No PDF uploaded — visitors cannot download your resume"}
           </Text>
         </View>

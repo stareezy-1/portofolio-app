@@ -139,5 +139,6 @@ export function useResume() {
     } as IApiResponse<IResume>,
     isLoading: false,
     error: null,
+    refetch: () => {},
   };
 }

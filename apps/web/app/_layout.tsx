@@ -1,7 +1,7 @@
 import { Slot } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider as AppThemeProvider } from "../src/providers/theme-provider";
 import { ThemeProvider as StareezyThemeProvider } from "@stareezy-ui/tokens";
+import { AuroraAppProvider } from "../src/providers/aurora-provider";
 import { ErrorBoundary } from "../src/error/error-boundary";
 import { STALE_TIME_PROJECTS } from "@/lib/constants/api.const";
 import { useEffect } from "react";
@@ -23,9 +23,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").catch(() => {
-          // SW registration failed — app still works without it
-        });
+        navigator.serviceWorker.register("/sw.js").catch(() => {});
       });
     }
   }, []);
@@ -34,9 +32,9 @@ export default function RootLayout() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <StareezyThemeProvider theme="dark">
-          <AppThemeProvider>
+          <AuroraAppProvider>
             <Slot />
-          </AppThemeProvider>
+          </AuroraAppProvider>
         </StareezyThemeProvider>
       </QueryClientProvider>
     </ErrorBoundary>

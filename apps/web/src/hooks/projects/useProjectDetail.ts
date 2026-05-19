@@ -5,14 +5,13 @@ import { useProject } from "@/lib/hooks/useProjects";
  * Encapsulates project fetching by slug.
  */
 export function useProjectDetail(slug: string) {
-  const { data, isLoading, error } = useProject(slug);
-
-  const project = data?.data ?? null;
+  const { data: project, isLoading, isError, refetch } = useProject(slug);
 
   return {
-    project,
+    project: project ?? null,
     isLoading,
-    error,
-    notFound: !isLoading && !error && !project,
+    error: isError,
+    notFound: !isLoading && !isError && !project,
+    refetch,
   };
 }

@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  Linking,
-  AccessibilityInfo,
-} from "react-native";
-import { NavLink } from "../../molecules/NavLink";
+import { View, Text, ScrollView, Pressable, Linking } from "react-native";
+import { AuroraNavBar } from "../../molecules/AuroraNavBar";
+import { HireMeFAB } from "../../molecules/HireMeFAB";
 import { useContent } from "../../../hooks/useContent";
+import { aurora } from "@/lib/constants/aurora";
 import styles from "./PublicLayout.style";
 
 export interface PublicLayoutProps {
@@ -31,15 +26,10 @@ const PROJECTS = [
   { label: "Portfolio", url: "https://stareezy.tech" },
 ];
 
-export function PublicLayout({
-  children,
-  isDark = false,
-  onNavigate,
-  currentRoute = "/",
-}: PublicLayoutProps) {
+export function PublicLayout({ children, onNavigate }: PublicLayoutProps) {
   const scrollRef = React.useRef<ScrollView>(null);
   const { data: contentData } = useContent();
-  const socialLinks = contentData?.data?.socialLinks ?? [
+  const socialLinks = contentData?.socialLinks ?? [
     { platform: "GitHub", url: "https://github.com/stareezy-1" },
     {
       platform: "LinkedIn",
@@ -48,82 +38,47 @@ export function PublicLayout({
     { platform: "Instagram", url: "https://www.instagram.com/stareezy/" },
   ];
 
-  const handleSkipToContent = () => {
-    scrollRef.current?.scrollTo({ y: 0, animated: false });
-    AccessibilityInfo.announceForAccessibility("Skipped to main content");
-  };
-
   return (
-    <View style={[styles.container, !isDark && styles.containerLight]}>
-      {/* Skip link */}
-      <Pressable
-        onPress={handleSkipToContent}
-        accessibilityRole="link"
-        accessibilityLabel="Skip to main content"
-        style={{ position: "absolute", top: -100, left: 0, zIndex: 999 }}
-      >
-        <Text>Skip to main content</Text>
-      </Pressable>
+    <View
+      style={[styles.container, { backgroundColor: aurora.deepSpace.value }]}
+    >
+      {/* Aurora NavBar — sticky, scroll-aware */}
+      <AuroraNavBar />
 
-      {/* Header */}
-      <View
-        style={[styles.header, !isDark && styles.headerLight]}
-        accessibilityRole="header"
-        accessibilityLabel="Site header"
-      >
-        <Pressable
-          style={styles.logoRow}
-          onPress={() => onNavigate?.("/")}
-          accessibilityRole="link"
-          accessibilityLabel="Go to home"
-        >
-          <View style={styles.logoDot} />
-          <Text style={[styles.logo, isDark && styles.logoDark]}>
-            Portfolio
-          </Text>
-        </Pressable>
-        <View
-          style={styles.nav}
-          accessibilityRole="menu"
-          accessibilityLabel="Main navigation"
-        >
-          {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.href}
-              label={link.label}
-              href={link.href}
-              active={currentRoute === link.href}
-              isDark={isDark}
-              onPress={() => onNavigate?.(link.href)}
-            />
-          ))}
-        </View>
-      </View>
-
-      {/* Main scroll area — footer lives inside so it scrolls with content */}
+      {/* Main scroll area */}
       <ScrollView
         ref={scrollRef}
         style={styles.main}
-        contentContainerStyle={styles.mainContent}
+        contentContainerStyle={[styles.mainContent, { paddingTop: 60 }]}
       >
         {children}
 
         {/* Footer */}
         <View
-          style={[styles.footer, !isDark && styles.footerLight]}
+          style={[
+            styles.footer,
+            {
+              backgroundColor: aurora.surfaceDark.value,
+              borderTopColor: aurora.borderSubtle.value,
+            },
+          ]}
           accessibilityRole="none"
           accessibilityLabel="Site footer"
         >
-          {/* Columns */}
           <View style={styles.footerInner}>
             {/* Brand */}
             <View style={styles.footerBrand}>
               <View style={styles.footerLogoRow}>
-                <View style={styles.footerLogoDot} />
+                <View
+                  style={[
+                    styles.footerLogoDot,
+                    { backgroundColor: aurora.auroraGreen.value },
+                  ]}
+                />
                 <Text
                   style={[
                     styles.footerLogoText,
-                    !isDark && styles.footerLogoTextLight,
+                    { color: aurora.starWhite.value },
                   ]}
                 >
                   stareezy
@@ -132,7 +87,7 @@ export function PublicLayout({
               <Text
                 style={[
                   styles.footerBrandDesc,
-                  !isDark && styles.footerBrandDescLight,
+                  { color: aurora.textSecondary.value },
                 ]}
               >
                 Front-end developer building modern web and mobile experiences
@@ -147,10 +102,20 @@ export function PublicLayout({
                     accessibilityLabel={`Visit ${link.platform}`}
                     style={[
                       styles.socialChip,
-                      !isDark && styles.socialChipLight,
+                      {
+                        backgroundColor: `${aurora.borderSubtle.value}80`,
+                        borderColor: aurora.borderSubtle.value,
+                      },
                     ]}
                   >
-                    <Text style={styles.socialChipText}>{link.platform}</Text>
+                    <Text
+                      style={[
+                        styles.socialChipText,
+                        { color: aurora.textSecondary.value },
+                      ]}
+                    >
+                      {link.platform}
+                    </Text>
                   </Pressable>
                 ))}
               </View>
@@ -161,7 +126,7 @@ export function PublicLayout({
               <Text
                 style={[
                   styles.footerColHeading,
-                  !isDark && styles.footerColHeadingLight,
+                  { color: aurora.starWhite.value },
                 ]}
               >
                 Navigate
@@ -176,7 +141,7 @@ export function PublicLayout({
                   <Text
                     style={[
                       styles.footerColLink,
-                      !isDark && styles.footerColLinkLight,
+                      { color: aurora.textSecondary.value },
                     ]}
                   >
                     {link.label}
@@ -190,7 +155,7 @@ export function PublicLayout({
               <Text
                 style={[
                   styles.footerColHeading,
-                  !isDark && styles.footerColHeadingLight,
+                  { color: aurora.starWhite.value },
                 ]}
               >
                 Projects
@@ -205,7 +170,7 @@ export function PublicLayout({
                   <Text
                     style={[
                       styles.footerColLink,
-                      !isDark && styles.footerColLinkLight,
+                      { color: aurora.textSecondary.value },
                     ]}
                   >
                     {p.label} ↗
@@ -215,22 +180,32 @@ export function PublicLayout({
             </View>
           </View>
 
-          {/* Bottom bar */}
           <View
-            style={[styles.footerBottom, !isDark && styles.footerBottomLight]}
+            style={[
+              styles.footerBottom,
+              { borderTopColor: aurora.borderSubtle.value },
+            ]}
           >
             <Text
-              style={[styles.footerCopy, !isDark && styles.footerCopyLight]}
+              style={[styles.footerCopy, { color: aurora.textMuted.value }]}
             >
               © {new Date().getFullYear()} Muhammad Bintang Al Akbar. All rights
               reserved.
             </Text>
-            <Text style={styles.footerBuiltWith}>
+            <Text
+              style={[
+                styles.footerBuiltWith,
+                { color: aurora.textMuted.value },
+              ]}
+            >
               Built with Expo · Go · Supabase
             </Text>
           </View>
         </View>
       </ScrollView>
+
+      {/* Floating Hire Me button */}
+      <HireMeFAB />
     </View>
   );
 }

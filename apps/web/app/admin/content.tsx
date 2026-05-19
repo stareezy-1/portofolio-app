@@ -44,8 +44,8 @@ export default function AdminContentPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (data?.data) {
-      const c = data.data;
+    if (data) {
+      const c = data;
       setForm(c);
       setSocialLinks(c.socialLinks ?? []);
       setTechStack(c.techStack ?? []);

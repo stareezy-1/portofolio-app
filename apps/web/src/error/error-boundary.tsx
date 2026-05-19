@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import { View, Text, Pressable } from "react-native";
-import styles from "./error-boundary.style";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import { aurora } from "@/lib/constants/aurora";
 
 interface Props {
   children: ReactNode;
@@ -40,7 +40,7 @@ export class ErrorBoundary extends Component<Props, State> {
           accessible
           accessibilityLabel="Application error"
         >
-          <Text style={styles.icon}>⚠️</Text>
+          <Text style={styles.icon}>⚠</Text>
           <Text style={styles.title}>Something went wrong</Text>
           <Text style={styles.message}>
             An unexpected error occurred. Please try refreshing the page.
@@ -63,7 +63,60 @@ export class ErrorBoundary extends Component<Props, State> {
         </View>
       );
     }
-
     return this.props.children;
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: aurora.deepSpace.value,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 32,
+  },
+  icon: {
+    fontSize: 48,
+    color: aurora.errorRed.value,
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: aurora.starWhite.value,
+    marginBottom: 8,
+    textAlign: "center",
+  },
+  message: {
+    fontSize: 15,
+    color: aurora.textSecondary.value,
+    textAlign: "center",
+    marginBottom: 24,
+    lineHeight: 22,
+  },
+  errorBox: {
+    backgroundColor: aurora.surfaceDark.value,
+    borderWidth: 1,
+    borderColor: aurora.errorRed.value,
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 24,
+    width: "100%",
+  },
+  errorText: {
+    fontSize: 12,
+    color: aurora.errorRed.value,
+    fontFamily: "monospace",
+  },
+  button: {
+    backgroundColor: aurora.auroraGreen.value,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: aurora.deepSpace.value,
+    fontWeight: "700",
+    fontSize: 15,
+  },
+});

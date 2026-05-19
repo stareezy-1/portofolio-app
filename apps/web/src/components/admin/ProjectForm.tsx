@@ -11,6 +11,7 @@ import {
 import { useUploadFile } from "@/lib/hooks/useAdmin";
 import type { IProjectCreateInput } from "@/lib/types/api";
 import type { IProject } from "@/lib/types/project";
+import { EProjectType } from "@/lib/constants/enums";
 import styles from "./ProjectForm.style";
 
 interface ProjectFormProps {
@@ -31,8 +32,8 @@ export function ProjectForm({
   const [title, setTitle] = useState(project?.title ?? "");
   const [slug, setSlug] = useState(project?.slug ?? "");
   const [description, setDescription] = useState(project?.description ?? "");
-  const [type, setType] = useState<"web" | "mobile" | "backend">(
-    (project?.type as any) ?? "web",
+  const [type, setType] = useState<EProjectType>(
+    (project?.type as EProjectType) ?? EProjectType.WEB,
   );
   const [technologies, setTechnologies] = useState(
     project?.technologies?.join(", ") ?? "",
@@ -212,7 +213,13 @@ export function ProjectForm({
         <View style={styles.fieldWrapper}>
           <Text style={styles.label}>Type *</Text>
           <View style={styles.typeRow}>
-            {(["web", "mobile", "backend"] as const).map((t) => (
+            {(
+              [
+                EProjectType.WEB,
+                EProjectType.MOBILE,
+                EProjectType.BACKEND,
+              ] as const
+            ).map((t) => (
               <Pressable
                 key={t}
                 style={[
@@ -230,11 +237,11 @@ export function ProjectForm({
                     type === t && styles.typeButtonTextActive,
                   ]}
                 >
-                  {t === "web"
+                  {t === EProjectType.WEB
                     ? "🌐 Web"
-                    : t === "mobile"
-                      ? "📱 Mobile"
-                      : "⚙️ Backend"}
+                    : t === EProjectType.MOBILE
+                    ? "📱 Mobile"
+                    : "⚙️ Backend"}
                 </Text>
               </Pressable>
             ))}

@@ -45,10 +45,6 @@ export type { HeroSectionProps } from "./organisms/HeroSection";
 export { TechStackSection } from "./organisms/TechStackSection";
 export type { TechStackSectionProps } from "./organisms/TechStackSection";
 export { ContactForm } from "./organisms/ContactForm";
-export type {
-  ContactFormProps,
-  ContactFormData,
-} from "./organisms/ContactForm";
 export { DemoRunner } from "./organisms/DemoRunner";
 export type { DemoRunnerProps } from "./organisms/DemoRunner";
 export { EmulatorView } from "./organisms/EmulatorView";

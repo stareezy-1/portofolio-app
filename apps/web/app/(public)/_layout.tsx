@@ -1,10 +1,7 @@
 import { Slot, usePathname, useRouter } from "expo-router";
 import { PublicLayout } from "@/lib/ui/layouts/PublicLayout";
-import { useTheme } from "../../src/providers/theme-provider";
-import { EThemeMode } from "@/lib/constants/enums";
 
 export default function PublicLayoutRoute() {
-  const { mode, toggle } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -14,8 +11,7 @@ export default function PublicLayoutRoute() {
 
   return (
     <PublicLayout
-      isDark={mode === EThemeMode.DARK}
-      onThemeToggle={toggle}
+      isDark={true}
       onNavigate={handleNavigate}
       currentRoute={pathname}
     >
