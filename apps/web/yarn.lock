@@ -2109,53 +2109,51 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@stareezy-ui/compiler@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@stareezy-ui/compiler/-/compiler-0.1.0.tgz"
-  integrity sha512-4UNGVCmTQPgsgREDgAeh7eEnIQA2358qw5pR0RXLmuRfJMIJ01Ef2IUBUImcedKJwiANwW6iBo7wBVx0zk4Z7w==
+"@stareezy-ui/compiler@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/compiler/-/compiler-0.2.4.tgz#61da29900b7b3fc233da49ebb62cc6ae5fcde50d"
+  integrity sha512-EPfRYNh2KXy0/wDlX/Hj0RPwTMGMSWlFsfsFEJ2XAyDLOdPT2Twb3KYoQ+IcIL9KJozVNmAdHfOFHpVQAY2kTA==
   dependencies:
-    "@stareezy-ui/tokens" "0.1.0"
+    "@stareezy-ui/tokens" "0.2.4"
 
-"@stareezy-ui/compiler@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/compiler/-/compiler-0.2.0.tgz#e936eeb64d52dfcfa4c6acd843d1cf592510e416"
-  integrity sha512-Wz0KTGJpyF9dFs55t6xr9W5zKeW7ZcYzk0tXpXucIJj8zySwz9C2OYoIcj4GvEHQxegEZ8nJorlee7utLmzLVA==
+"@stareezy-ui/components@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/components/-/components-0.2.10.tgz#62e16f0ef662097a0abf6ed56b6fe0d8eac1bf78"
+  integrity sha512-mgrl236llLAVqWQkmHLfp9bHogeaZ1rdOKDyX0jsZeBj2ypdFgqy9lifnVymZSn0dpeOzWkKJ5SJ5UAHXZA6JA==
   dependencies:
-    "@stareezy-ui/tokens" "0.2.0"
+    "@stareezy-ui/core" "0.2.4"
+    "@stareezy-ui/runtime" "0.2.4"
+    "@stareezy-ui/tokens" "0.2.5"
 
-"@stareezy-ui/components@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/components/-/components-0.2.0.tgz#3a445105b585218507401c4437e8ef0269721f3f"
-  integrity sha512-Bp2M8JB14O7v/IgfQWvgex7qDClotoFiqsq0ZZqGK8AaNcc/RXViUyoXcP+j7kUxQBRD2l6kj8Sb4TU3UsHmvw==
+"@stareezy-ui/core@0.2.4", "@stareezy-ui/core@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/core/-/core-0.2.4.tgz#1150e67153e4e771bcee94627b63564afa91895f"
+  integrity sha512-8HMvdWd1P66A6cW5fU2ah+CjnncO+3klfLy6UMlfK5bI4TgtKLEpZJDKek3ZsLsISPhhZJ3ZJwBDSzpLrkNM4g==
   dependencies:
-    "@stareezy-ui/core" "0.2.0"
-    "@stareezy-ui/runtime" "0.2.0"
-    "@stareezy-ui/tokens" "0.2.0"
+    "@stareezy-ui/tokens" "0.2.4"
 
-"@stareezy-ui/core@0.2.0", "@stareezy-ui/core@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/core/-/core-0.2.0.tgz#b75b80b311b923919d2b4793d2dec38e8c73cfbd"
-  integrity sha512-rd8+mZJFic7P5m8WIGe3K8jUf5HuXCpOQfqdBTmhgqoTojVXgqaQjIL+rM9xc7TFKHxrzxvyAEI3IFZPudJmTA==
+"@stareezy-ui/runtime@0.2.4", "@stareezy-ui/runtime@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/runtime/-/runtime-0.2.4.tgz#7a6ae3720c630ecd59c793766b03eaf2ebd3f03e"
+  integrity sha512-a2S1zRUicxQRg0rOumRRKZAdX8watjioxKvCLCBtFshQaHMvguZjmjSjxO7KXiJXyH3OuSdklmRfD0e6pjC2tw==
   dependencies:
-    "@stareezy-ui/tokens" "0.2.0"
+    "@stareezy-ui/stylesheet" "0.2.3"
+    "@stareezy-ui/tokens" "0.2.4"
 
-"@stareezy-ui/runtime@0.2.0", "@stareezy-ui/runtime@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/runtime/-/runtime-0.2.0.tgz#0d1f1db1e646d57b09960e6e3f780dcc293f1c56"
-  integrity sha512-D3olqJQLQpXqgHcAlGZ2kOE5M9H3bKVpeoUG1aSynvDurtgivvkshmPWrMcGaXvYO1ofQ0aYrJ+VdLmprRrSng==
-  dependencies:
-    "@stareezy-ui/stylesheet" "0.2.0"
-    "@stareezy-ui/tokens" "0.2.0"
+"@stareezy-ui/stylesheet@0.2.3", "@stareezy-ui/stylesheet@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/stylesheet/-/stylesheet-0.2.3.tgz#d7cf611d65b3ff39c161e36a7c8159bb1d23c3bd"
+  integrity sha512-gQiLlgv2F2RKhD3uLZLfTbC8/3ISDu3YOHXUt5svEkPu3st9y2iwmZlItTUujccLYl4TpQCpi6W0fMpm3uVuNg==
 
-"@stareezy-ui/stylesheet@0.2.0", "@stareezy-ui/stylesheet@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/stylesheet/-/stylesheet-0.2.0.tgz#1c03de59cc824a0ccbe8979fb67922eb37382daa"
-  integrity sha512-jzq0q2iQco7/XwfUV4RC7/0y0v6yn0dDfLeFy6Qg2LAETDhvCUwxIx/Bty9COaAV+50llTbjvt1FxXoq5vm51A==
+"@stareezy-ui/tokens@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/tokens/-/tokens-0.2.4.tgz#6238477f943ff64606cc60475de4d8a35ccf3218"
+  integrity sha512-WBAV805tr4hdw0G1lnvBxePyp1Gbj30XAx5HfSwZ114YFmEPz2OoBPt2OBt+gHfn7VaYRlUli4nAGSOSunSsDw==
 
-"@stareezy-ui/tokens@0.1.0", "@stareezy-ui/tokens@0.2.0", "@stareezy-ui/tokens@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stareezy-ui/tokens/-/tokens-0.2.0.tgz#af10f9216892393dd7aa672f48212045178172a3"
-  integrity sha512-EkTrymGa7rE6JiLNumPQZ3zQqMdns9pcNLrXak7uy/30me2KhhOKslZFwZoDQvi0wZk0Jkvk9dKxEBi8xLgwig==
+"@stareezy-ui/tokens@0.2.5", "@stareezy-ui/tokens@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@stareezy-ui/tokens/-/tokens-0.2.5.tgz#91cf415354906144f4c688212f33aa26bdd33a39"
+  integrity sha512-usD7cqZvTnlvvWo2uae+DFErre1K9A6OLNB8oHmmOJLwAgq7hw9mJcZbLUj9tcjOnPkn1QPpMJ30TqiCXPQ+7Q==
 
 "@tanstack/query-core@5.100.10":
   version "5.100.10"

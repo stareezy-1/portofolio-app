@@ -194,6 +194,7 @@ export default function LandingPage() {
         <meta name="theme-color" content={aurora.deepSpace.value} />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/icon-192.svg" />
       </Head>
 
