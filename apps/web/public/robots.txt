@@ -1,6 +1,28 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /admin
 Disallow: /login
 
+# Allow major search & social crawlers explicitly
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /login
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /login
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
 Sitemap: https://stareezy.tech/sitemap.xml
+Host: https://stareezy.tech
